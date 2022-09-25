@@ -16,7 +16,7 @@ services:
     hostname: mariadb
     restart: unless-stopped
     environment:
-      MARIADB_ROOT_PASSWORD: "${MYSQL_ROOT_PASS}"
+      MARIADB_ROOT_PASSWORD: ${MYSQL_ROOT_PASS}
     networks:
       PublicMacvlan:
         ipv4_address: 10.0.6.31

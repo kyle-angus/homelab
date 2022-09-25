@@ -7,7 +7,7 @@ services:
     restart: unless-stopped
     environment:
       TZ: "America/Detroit"
-      PLEX_CLAIM: "${PLEX_CLAIM}"
+      PLEX_CLAIM: ${PLEX_CLAIM}
     hostname: plex.kangus.net
     volumes:
       - plex:/config
@@ -66,7 +66,7 @@ services:
       PGID: 1000
       TZ: "America/Detroit"
       NZBGET_USER: nzbget
-      NZBGET_PASS: "${NZBGET_PASS}"
+      NZBGET_PASS: ${NZBGET_PASS}
     volumes:
       - nzbget:/config
       - /data:/data

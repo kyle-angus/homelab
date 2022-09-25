@@ -51,7 +51,7 @@ services:
     restart: unless-stopped
     environment:
       SERVER_NAME: "zombieland"
-      ADMIN_PASSWORD: "${ZOMBOID_ADMIN_PASS}"
+      ADMIN_PASSWORD: ${ZOMBOID_ADMIN_PASS}
     volumes:
       - /data/project-zomboid:/server-data
     networks:
