@@ -1,0 +1,26 @@
+version: "3"
+
+services:
+  mongodb:
+    container_name: mongodb
+    image: mongo
+    hostname: mongdb
+    restart: unless-stopped
+    networks:
+      PublicMacvlan:
+        ipv4_address: 10.0.6.30
+
+  mariadb:
+    container_name: mariadb
+    image: mariadb
+    hostname: mariadb
+    restart: unless-stopped
+    environment:
+      MARIADB_ROOT_PASSWORD: "${MYSQL_ROOT_PASS}"
+    networks:
+      PublicMacvlan:
+        ipv4_address: 10.0.6.31
+
+networks:
+  PublicMacvlan:
+    external: true

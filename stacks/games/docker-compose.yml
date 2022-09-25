@@ -1,0 +1,105 @@
+version: "3"
+
+services:
+  minecraft_bedrock:
+    container_name: mincraft-bedrock
+    image: itzg/minecraft-bedrock-server
+    restart: unless-stopped
+    tty: true
+    stdin_open: TRUE
+    environment:
+      EULA: "TRUE"
+      GAMEMODE: "survival"
+      DIFFICULTY: "normal"
+      SERVER_PORT: "19132"
+      VERSION: "LATEST"
+    volumes:
+      - /data/minecraft-bedrock:/data
+    networks:
+      PublicMacvlan:
+        ipv4_address: 10.0.6.13
+    ports:
+      - 19132:19132/udp
+
+  minecraft_server:
+    container_name: minecraft-server
+    image: itzg/minecraft-server
+    restart: unless-stopped
+    tty: true
+    stdin_open: true
+    environment:
+      MOTD: "Kangus World"
+      DIFFICULTY: "normal"
+      ENFORCE_WHITELIST: "FALSE"
+      OPS: "k_angus"
+      SNOOPER_ENABLED: "FALSE"
+      LEVEL: "KangusWorld"
+      EULA: "TRUE"
+      VIEW_DISTANCE: "16"
+      TYPE: "FORGE"
+    volumes:
+      - /data/minecraft:/data
+    networks:
+      PublicMacvlan:
+        ipv4_address: 10.0.6.9
+    ports:
+      - 25565:25565
+
+  project_zomboid_server:
+    container_name: project-zomboid-server
+    image: cyrale/project-zomboid
+    restart: unless-stopped
+    environment:
+      SERVER_NAME: "zombieland"
+      ADMIN_PASSWORD: "${ZOMBOID_ADMIN_PASS}"
+    volumes:
+      - /data/project-zomboid:/server-data
+    networks:
+      PublicMacvlan:
+        ipv4_address: 10.0.6.11
+    ports:
+      - "8766:8766/udp"
+      - "8767:8767/udp"
+      - "16261:16261/udp"
+      - "16262-16272:16262-16272"
+      - "27015:27015"
+
+  factorio_server:
+    container_name: factorio-server
+    image: factoriotools/factorio
+    restart: unless-stopped
+    environment:
+      INSTANCE_NAME: "Kangus' Megafactory"
+      INSTANCE_DESC: "Death to bugs"
+    volumes:
+      - /data/factorio:/factorio
+    networks:
+      PublicMacvlan:
+        ipv4_address: 10.0.6.12
+    ports:
+      - "34197:34197/udp"
+      - "27015:27015/tcp"
+
+networks:
+  PublicMacvlan:
+    external: true
+
+volumes:
+  minecraft-bedrock:
+    external: true
+  ns1:
+    external: true
+  plex:
+    external: true
+  plex-metrics:
+    external: true
+  utorrent:
+    external: true
+  nzbget:
+    external: true
+  radarr:
+    external: true
+  sonarr:
+    external: true
+  jackett:
+    external: true

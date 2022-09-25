@@ -1,0 +1,51 @@
+version: "3"
+
+services:
+  proxy:
+    container_name: proxy
+    image: "jc21/nginx-proxy-manager:latest"
+    restart: always
+    volumes:
+      - proxy:/data
+      - certs:/etc/letsencrypt
+    networks:
+      proxy-internal:
+      PublicMacvlan:
+        ipv4_address: 10.0.6.80
+    ports:
+      - "80:80"
+      - "81:81"
+      - "443:443"
+
+  ns1:
+    container_name: ns1
+    image: cosmicq/docker-bind
+    hostname: ns1
+    restart: always
+    environment:
+      PASS: "${NS_ADMIN_PASS}"
+    volumes:
+      - ns1:/etc/bind
+      - ns1:/var/lib/bind
+      - ns1:/etc/webmin
+    networks:
+      proxy-internal:
+      PublicMacvlan:
+        ipv4_address: 10.0.6.101
+    ports:
+      - 53:53
+      - "53:53/udp"
+
+networks:
+  proxy-internal:
+    external: true
+  PublicMacvlan:
+    external: true
+
+volumes:
+  proxy:
+    external: true
+  certs:
+    external: true
+  ns1:
+    external: true
