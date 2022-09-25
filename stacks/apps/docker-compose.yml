@@ -11,8 +11,11 @@ services:
       PUBLIC_KEY: ${DISCORD_PUBLIC_KEY}
       DISCORD_TOKEN: ${DISCORD_TOKEN}
     networks:
+      - requires-outbound
       - proxy-internal
 
 networks:
+  requires-outbound:
+    external: true
   proxy-internal:
     external: true

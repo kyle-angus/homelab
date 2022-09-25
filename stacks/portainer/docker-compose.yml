@@ -10,9 +10,12 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - portainer_data:/data
     networks:
+      - requires-outbound
       - proxy-internal
 
 networks:
+  requires-outbound:
+    external: true
   proxy-internal:
     external: true
 
