@@ -23,7 +23,7 @@ services:
     hostname: ns1
     restart: always
     environment:
-      PASS: ${NS_ADMIN_PASS}
+      PASS: $NS_ADMIN_PASS
     volumes:
       - ns1:/etc/bind
       - ns1:/var/lib/bind
