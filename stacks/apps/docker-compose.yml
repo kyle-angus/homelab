@@ -20,7 +20,6 @@ services:
     hostname: evictions-api
     restart: unless-stopped
     environment:
-      PORT: 80
       SEND_GRID_KEY: ${SEND_GRID_KEY}
       SEND_GRID_MAIL_FROM: ${SEND_GRID_MAIL_FROM}
       RESET_PASSWORD_TEMPLATE: ${RESET_PASSWORD_TEMPLATE}
@@ -33,8 +32,6 @@ services:
     image: kangus/evictions-ui:latest
     hostname: evictions-ui
     restart: unless-stopped
-    environment:
-      PORT: 80
     networks:
       - proxy-internal
 
