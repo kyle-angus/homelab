@@ -14,6 +14,29 @@ services:
       - requires-outbound
       - proxy-internal
 
+  evictions-api:
+    container_name: evictions-api
+    image: kangus/evictions-api:latest
+    hostname: evictions-api
+    restart: unless-stopped
+    environment:
+      PORT: 80
+      SEND_GRID_KEY: ${SEND_GRID_KEY}
+      SEND_GRID_MAIL_FROM: ${SEND_GRID_MAIL_FROM}
+      RESET_PASSWORD_TEMPLATE: ${RESET_PASSWORD_TEMPLATE}
+    networks:
+      - proxy-internal
+
+  evictions-ui:
+    container_name: evictions-ui
+    image: kangus/evictions-ui:latest
+    hostname: evictions-ui
+    restart: unless-stopped
+    environment:
+      PORT: 80
+    networks:
+      - proxy-internal
+
 networks:
   requires-outbound:
     external: true
