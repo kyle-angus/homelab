@@ -32,6 +32,8 @@ services:
     image: kangus/evictions-ui:latest
     hostname: evictions-ui
     restart: unless-stopped
+    environment:
+      BASE_URL: ${BASE_URL}
     networks:
       - proxy-internal
 
