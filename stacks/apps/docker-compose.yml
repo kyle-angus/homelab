@@ -35,9 +35,8 @@ services:
     ports:
       - 3000:3000
     environment:
-      BASE_URL: ${BASE_URL}
+      REACT_APP_BASE_URL: ${REACT_APP_BASE_URL}
       NODE_PORT: ${UI_NODE_PORT}
-
     networks:
       - proxy-internal
 
