@@ -9,6 +9,7 @@ services:
     networks:
       PublicMacvlan:
         ipv4_address: 10.0.6.30
+      proxy-internal:
 
   mariadb:
     container_name: mariadb
@@ -20,7 +21,10 @@ services:
     networks:
       PublicMacvlan:
         ipv4_address: 10.0.6.31
+      proxy-internal:
 
 networks:
   PublicMacvlan:
+    external: true
+  proxy-internal:
     external: true
