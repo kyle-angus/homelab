@@ -32,8 +32,6 @@ services:
     image: kangus/evictions-ui:latest
     hostname: evictions-ui
     restart: unless-stopped
-    ports:
-      - 3000:3000
     environment:
       REACT_APP_API_PROXY: ${REACT_APP_API_PROXY}
     networks:
