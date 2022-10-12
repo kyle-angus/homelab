@@ -38,7 +38,6 @@ services:
       REACT_APP_API_PROXY: ${REACT_APP_API_PROXY}
     networks:
       - proxy-internal
-    command: nginx -g daemon-off;
 
 networks:
   requires-outbound:
