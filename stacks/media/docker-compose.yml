@@ -71,6 +71,7 @@ services:
       - nzbget:/config
       - /data:/data
     networks:
+      requires-outbound:
       proxy-internal:
 
   radarr:
@@ -85,6 +86,7 @@ services:
       - radarr:/config
       - /data:/data
     networks:
+      requires-outbound:
       proxy-internal:
 
   sonarr:
@@ -99,6 +101,7 @@ services:
       - sonarr:/config
       - /data:/data
     networks:
+      requires-outbound:
       proxy-internal:
 
   jackett:
@@ -117,6 +120,8 @@ services:
       proxy-internal:
 
 networks:
+  requires-outbound:
+    external: true
   proxy-internal:
     external: true
   PublicMacvlan:
