@@ -1,6 +1,24 @@
-version: "3"
+version: '3'
 
 services:
+  cornerstone:
+    container_name: cornerstone
+    image: kangus/cornerstone:latest
+    hostname: cornerstone
+    restart: unless-stopped
+    environment:
+      MYSQL_HOST: ${MYSQL_HOST}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASS: ${MYSQL_PASS}
+      MYSQL_DB: ${MYSQL_DB}
+      RADARR_HOST: ${RADARR_HOST}
+      RADARR_KEY: ${RADARR_KEY}
+    volumes:
+      - /data:/data
+    networks:
+      - requires-outbound
+      - proxy-internal
+
   brenbot-discord:
     container_name: brenbot-discord
     image: kangus/brenbot-discord:latest
