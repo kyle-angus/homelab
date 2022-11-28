@@ -1,4 +1,4 @@
-version: "3"
+version: '3'
 
 services:
   plex:
@@ -6,7 +6,7 @@ services:
     image: plexinc/pms-docker
     restart: unless-stopped
     environment:
-      TZ: "America/Detroit"
+      TZ: 'America/Detroit'
       PLEX_CLAIM: ${PLEX_CLAIM}
     hostname: plex.kangus.net
     volumes:
@@ -23,9 +23,9 @@ services:
     image: tautulli/tautulli
     restart: unless-stopped
     environment:
-      PUID: "1000"
-      PGID: "1000"
-      TZ: "America/Detroit"
+      PUID: '1000'
+      PGID: '1000'
+      TZ: 'America/Detroit'
     volumes:
       - plex-metrics:/config
     networks:
@@ -42,10 +42,10 @@ services:
       GID: 1000
       webui: ut
     logging:
-      driver: "json-file"
+      driver: 'json-file'
       options:
-        max-size: "10m"
-        max-file: "3"
+        max-size: '10m'
+        max-file: '3'
     volumes:
       - utorrent:/utorrent/settings
       - /data/torrent:/data
@@ -64,7 +64,7 @@ services:
     environment:
       PUID: 1000
       PGID: 1000
-      TZ: "America/Detroit"
+      TZ: 'America/Detroit'
       NZBGET_USER: nzbget
       NZBGET_PASS: ${NZBGET_PASS}
     volumes:
@@ -81,7 +81,7 @@ services:
     environment:
       PUID: 1000
       PGID: 1000
-      TZ: "America/Detroit"
+      TZ: 'America/Detroit'
     volumes:
       - radarr:/config
       - /data:/data
@@ -96,7 +96,7 @@ services:
     environment:
       PUID: 1000
       PGID: 1000
-      TZ: "America/Detroit"
+      TZ: 'America/Detroit'
     volumes:
       - sonarr:/config
       - /data:/data
@@ -111,13 +111,14 @@ services:
     environment:
       PUID: 1000
       PGID: 1000
-      TZ: "America/Detroit"
-      AUTO_UPDATE: "TRUE"
+      TZ: 'America/Detroit'
+      AUTO_UPDATE: 'TRUE'
     volumes:
       - jackett:/config
       - /data:/downloads
     networks:
       proxy-internal:
+      requires-outbound:
 
 networks:
   requires-outbound:
