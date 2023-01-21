@@ -67,3 +67,5 @@ volumes:
     external: true
   ns1:
     external: true
+  irc:
+    external: true
