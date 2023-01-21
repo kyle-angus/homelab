@@ -36,6 +36,24 @@ services:
       - 53:53
       - "53:53/udp"
 
+  irc:
+    container_name: irc
+    image: lscr.io/linuxserver/znc:latest
+    hostname: irc
+    restart: unless-stopped
+    environment:
+      PUID: 1000
+      PGID: 1000
+      TZ: "America/Detroit"
+    volumes:
+      - irc:/config
+    networks:
+      proxy-internal:
+      PublicMacvlan:
+        ipv4_address: 10.0.6.90
+    ports:
+      - 6501:6501
+
 networks:
   proxy-internal:
     external: true
