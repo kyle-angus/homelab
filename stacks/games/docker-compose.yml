@@ -16,12 +16,12 @@ services:
       ADMINLIST_IDS: "76561198038288044"
       UPDATE_CRON: "0 2 * * *"
       RESTART_CRON: "0 3 * * *"
-      RESTAT_IF_IDLE: true
+      RESTAT_IF_IDLE: "true"
       TZ: "America/Detroit"
-      BACKUPS: true
-      SERVER_PUBLIC: true
-      PUID: 1000
-      GUID: 1000
+      BACKUPS: "true"
+      SERVER_PUBLIC: "true"
+      PUID: "1000"
+      GUID: "1000"
     volumes:
       - /data/valheim-server/config:/config
       - /data/valheim-server/data:/opt/valheim
