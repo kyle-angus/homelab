@@ -11,6 +11,7 @@ services:
     environment:
       SERVER_NAME: "Kangorheim"
       SERVER_PORT: 2456 # default
+      STATUS_HTTP: "true"
       WORLD_NAME: "Kangorheim"
       SERVER_PASS: ${VALHEIM_SERVER_PASS}
       ADMINLIST_IDS: "76561198038288044"
@@ -20,6 +21,16 @@ services:
       TZ: "America/Detroit"
       BACKUPS: "true"
       SERVER_PUBLIC: "true"
+      VALHEIM_PLUS: "true"
+      VPCFG_Server_enabled: "true"
+      VPCFG_Server_serverSyncsConfig: "true"
+      VPCFG_Map_enabled: "true"
+      VPCFG_Map_shareMapProgression: "true"
+      VPCFG_Map_preventPlayerFromTurningOffPublicPosition: "true"
+      VPCFG_Map_shareAllPins: "true"
+      VPCFG_Map_displayCartsAndBoats: "true"
+      VPCFG_FireSource_enabled: "true"
+      VPCFG_FireSource_torches: "true"
       PUID: "1000"
       GUID: "1000"
     volumes:
