@@ -50,8 +50,8 @@ services:
       CLIENT_BASE_URL: ${CLIENT_BASE_URL}
       REDIS_HOST: ${REDIS_HOST}
       REDIS_PORT: ${REDIS_PORT}
-
     networks:
+      - requires-outbound
       - proxy-internal
 
   evictions-ui:
