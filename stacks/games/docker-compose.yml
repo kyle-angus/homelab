@@ -40,25 +40,24 @@ services:
       VPCFG_Fermenter_showDuration: "true"
       # Food
       VPCFG_Food_enabled: "true"
-      VPCFG_Food_disableFoodDegredation: "true"
+      VPCFG_Food_disableFoodDegradation: "true"
       # HUD
       VPCFG_Hud_enabled: "true"
-      VPCFG_Hud_displayBowAmmoCounts: "true"
-      VPCFG_Hud_displayBowAmmoCounts: "true"
+      VPCFG_Hud_displayBowAmmoCounts: "2"
       # Player
       VPCFG_Player_enabled: "true"
       VPCFG_Player_baseMegingjordBuff: "250"
       VPCFG_Player_cropNotifier: "true"
       # Workbench
-      VPCFG_Workbanch_enabled: "true"
-      VPCFG_Workbanch_workbenchRange: "true"
+      VPCFG_Workbench_enabled: "true"
+      VPCFG_Workbench_workbenchRange: "40"
       # GameClock
       VPCFG_GameClock_enabled: "true"
       VPCFG_GameClock_useAMPM: "true"
       # BeeHive
-      VPCFG_BeeHive_enabled: "true"
-      VPCFG_BeeHive_honeyProductionSpeed: "60"
-      VPCFG_BeeHive_maximumHoneyPerBeehive: "69"
+      VPCFG_Beehive_enabled: "true"
+      VPCFG_Beehive_honeyProductionSpeed: "60"
+      VPCFG_Beehive_maximumHoneyPerBeehive: "69"
       # Pickable
       VPCFG_Pickable_enabled: "true"
       VPCFG_Pickable_edibles: "100"
