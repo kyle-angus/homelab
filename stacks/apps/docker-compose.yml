@@ -2,7 +2,8 @@ version: '3'
 
 services:
   kyleangusdotcom:
-    container_name: kangus/kyleangusdotcom:latest
+    container_name: kyleangusdotcom
+    image: kangus/kyleangusdotcom:latest
     hostname: kyleangusdotcom
     restart: unless-stopped
     networks:
