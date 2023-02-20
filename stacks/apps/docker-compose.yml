@@ -1,6 +1,13 @@
 version: '3'
 
 services:
+  kyleangusdotcom:
+    container_name: kangus/kyleangusdotcom:latest
+    hostname: kyleangusdotcom
+    restart: unless-stopped
+    networks:
+      - proxy-internal
+
   cornerstone:
     container_name: cornerstone
     image: kangus/cornerstone:latest
