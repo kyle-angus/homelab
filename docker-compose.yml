@@ -1,0 +1,47 @@
+version: '3'
+
+services:
+  portainer:
+    container_name: portainer
+    image: portainer/portainer-ce:latest
+    command: -H unix:///var/run/docker.sock
+    restart: always
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer_data:/data
+    networks:
+      - proxy-traffic
+
+  proxy:
+    container_name: proxy
+    image: "jc21/nginx-proxy-manager:latest"
+    restart: always
+    volumes:
+      - proxy:/data
+      - certs:/etc/letsencrypt
+    networks:
+      proxy-traffic:
+      lan:
+        ipv4_address: 10.1.7.2
+    ports:
+      - "80:80"
+      - "81:81"
+      - "443:443"
+
+networks:
+  lan:
+    name: lan
+    driver: macvlan
+    driver_opts:
+      parent: eth0
+    ipam:
+      config:
+        - subnet: "10.1.7.0/24"
+          ip_range: "10.1.7.2/24"
+          gateway: "10.1.7.1"
+  proxy-traffic:
+
+volumes:
+  portainer_data:
+  proxy:
+  certs:
