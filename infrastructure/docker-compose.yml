@@ -10,7 +10,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - portainer_data:/data
     networks:
-      - proxy-traffic
+      proxy-traffic:
 
   proxy:
     container_name: proxy
@@ -22,7 +22,7 @@ services:
     networks:
       proxy-traffic:
       lan:
-        ipv4_address: 10.1.7.2
+        ipv4_address: 10.1.7.3
     ports:
       - "80:80"
       - "81:81"
@@ -33,15 +33,19 @@ networks:
     name: lan
     driver: macvlan
     driver_opts:
-      parent: eth0
+      parent: eno2
     ipam:
       config:
         - subnet: "10.1.7.0/24"
           ip_range: "10.1.7.2/24"
           gateway: "10.1.7.1"
   proxy-traffic:
+    name: proxy-traffic
 
 volumes:
   portainer_data:
+    name: portainer_data
   proxy:
+    name: proxy
   certs:
+    name: certs
