@@ -1,4 +1,4 @@
-version: '3'
+version: "3"
 
 services:
   portainer:
@@ -11,6 +11,24 @@ services:
       - portainer_data:/data
     networks:
       proxy-traffic:
+
+  dns:
+    container_name: dns
+    image: pihole/pihole:latest
+    restart: always
+    environment:
+      - TZ=America/New York
+    volumes:
+      - dns:/etc/pihole
+      - dnsmasq:/etc/dnsmasq.d
+    networks:
+      proxy-traffic:
+      lan:
+        ipv4_address: 10.1.7.4
+    ports:
+      - "53:53/tcp"
+      - "53:53/udp"
+      - "80:80/tcp"
 
   proxy:
     container_name: proxy
@@ -49,3 +67,7 @@ volumes:
     name: proxy
   certs:
     name: certs
+  dns:
+    name: dns
+  dnsmasq:
+    name: dnsmasq
