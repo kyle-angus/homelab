@@ -1,145 +1,133 @@
-version: '3'
+version: "3"
 
 services:
   plex:
     container_name: plex
-    image: plexinc/pms-docker
+    hostname: plex.kangus.net
+    image: plexinc/pms-docker:latest
     restart: unless-stopped
     environment:
-      TZ: 'America/Detroit'
+      TZ: "America/Detroit"
       PLEX_CLAIM: ${PLEX_CLAIM}
-    hostname: plex.kangus.net
     volumes:
       - plex:/config
       - plex:/transcode
-      - /data:/data
+      - /media:/media
     networks:
-      proxy-internal:
-      PublicMacvlan:
-        ipv4_address: 10.0.6.3
+      proxy-traffic:
+      lan:
+        ipv4_address: 10.1.7.5
 
   plex_metrics:
     container_name: plex-metrics
+    hostname: plex-metrics
     image: tautulli/tautulli
     restart: unless-stopped
     environment:
-      PUID: '1000'
-      PGID: '1000'
-      TZ: 'America/Detroit'
+      TZ: "America/Detroit"
     volumes:
       - plex-metrics:/config
     networks:
-      proxy-internal:
-      PublicMacvlan:
-        ipv4_address: 10.0.6.4
+      - proxy-traffic
 
   utorrent:
     container_name: utorrent
     image: ekho/utorrent:latest
     restart: unless-stopped
-    environment:
-      UID: 1000
-      GID: 1000
-      webui: ut
     logging:
-      driver: 'json-file'
+      driver: "json-file"
       options:
-        max-size: '10m'
-        max-file: '3'
+        max-size: "10m"
+        max-file: "3"
+    environment:
+      TZ: "America/Detroit"
+      PUID: 1000
+      PGID: 1000
     volumes:
       - utorrent:/utorrent/settings
-      - /data/torrent:/data
+      - /media/utorrent:/data
     networks:
-      proxy-internal:
-      PublicMacvlan:
-        ipv4_address: 10.0.6.5
-    ports:
-      - 6881:6881
-      - 6881:6881/udp
+      proxy-traffic:
+      lan:
+        ipv4_address: 10.1.7.6
 
-  nzbget:
+  nzbet:
     container_name: nzbget
     image: linuxserver/nzbget
     restart: unless-stopped
     environment:
-      PUID: 1000
-      PGID: 1000
-      TZ: 'America/Detroit'
+      TZ: "America/Detroit"
       NZBGET_USER: nzbget
       NZBGET_PASS: ${NZBGET_PASS}
+      PUID: 1000
+      PGID: 1000
     volumes:
       - nzbget:/config
-      - /data:/data
+      - /media:/data
     networks:
-      requires-outbound:
-      proxy-internal:
+      - proxy-traffic
 
   radarr:
     container_name: radarr
     image: linuxserver/radarr
     restart: unless-stopped
     environment:
+      TZ: "America/Detroit"
       PUID: 1000
       PGID: 1000
-      TZ: 'America/Detroit'
     volumes:
       - radarr:/config
-      - /data:/data
+      - /media:/data
     networks:
-      requires-outbound:
-      proxy-internal:
+      - proxy-traffic
 
   sonarr:
     container_name: sonarr
     image: linuxserver/sonarr
     restart: unless-stopped
     environment:
+      TZ: "America/Detroit"
       PUID: 1000
       PGID: 1000
-      TZ: 'America/Detroit'
     volumes:
       - sonarr:/config
-      - /data:/data
+      - /media:/data
     networks:
-      requires-outbound:
-      proxy-internal:
+      - proxy-traffic
 
   jackett:
     container_name: jackett
     image: linuxserver/jackett
     restart: unless-stopped
     environment:
+      TZ: "America/Detroit"
+      AUTO_UPDATE: "TRUE"
       PUID: 1000
       PGID: 1000
-      TZ: 'America/Detroit'
-      AUTO_UPDATE: 'TRUE'
     volumes:
       - jackett:/config
-      - /data:/downloads
+      - /media:/downloads
     networks:
-      proxy-internal:
-      requires-outbound:
+      - proxy-traffic
 
 networks:
-  requires-outbound:
+  proxy-traffic:
     external: true
-  proxy-internal:
-    external: true
-  PublicMacvlan:
+  lan:
     external: true
 
 volumes:
-  plex:
-    external: true
-  plex-metrics:
-    external: true
   utorrent:
-    external: true
+    name: utorrnet
   nzbget:
-    external: true
+    name: nzbget
   radarr:
-    external: true
+    name: radarr
   sonarr:
-    external: true
+    name: sonarr
   jackett:
-    external: true
+    name: jackett
+  plex:
+    name: plex
+  plex-metrics:
+    name: plex-metrics
