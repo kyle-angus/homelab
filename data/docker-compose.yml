@@ -7,8 +7,8 @@ services:
     hostname: mongdb
     restart: unless-stopped
     networks:
-      PublicMacvlan:
-        ipv4_address: 10.0.6.30
+      lan:
+        ipv4_address: 10.1.7.10
       proxy-internal:
 
   mariadb:
@@ -19,8 +19,8 @@ services:
     environment:
       MARIADB_ROOT_PASSWORD: ${MYSQL_ROOT_PASS}
     networks:
-      PublicMacvlan:
-        ipv4_address: 10.0.6.31
+      lan:
+        ipv4_address: 10.1.7.11
       proxy-internal:
 
   redis:
@@ -29,14 +29,12 @@ services:
     ports:
       - "6379"
     networks:
-      PublicMacvlan:
-        ipv4_address: 10.0.6.32
+      lan:
+        ipv4_address: 10.1.7.12
       proxy-internal:
 
-
-
 networks:
-  PublicMacvlan:
+  lan:
     external: true
   proxy-internal:
     external: true

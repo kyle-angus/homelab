@@ -3,10 +3,10 @@ version: "3"
 services:
   valheim:
     container_name: valheim-server
-    image: lloesche/valheim-server
+    image: lloesche/valheim-server:latest
     restart: unless-stopped
     cap_add:
-        - sys_nice
+      - sys_nice
     stop_grace_period: 2m
     environment:
       SERVER_NAME: "Kangorheim"
@@ -68,14 +68,14 @@ services:
       - /data/valheim-server/config:/config
       - /data/valheim-server/data:/opt/valheim
     networks:
-      PublicMacvlan:
-        ipv4_address: 10.0.6.14
+      lan:
+        ipv4_address: 10.1.7.30
     ports:
       - "2456-2460:2456-2460/udp"
-  
+
   minecraft_bedrock:
     container_name: mincraft-bedrock
-    image: itzg/minecraft-bedrock-server
+    image: itzg/minecraft-bedrock-server:latest
     restart: unless-stopped
     tty: true
     stdin_open: TRUE
@@ -88,14 +88,14 @@ services:
     volumes:
       - /data/minecraft-bedrock:/data
     networks:
-      PublicMacvlan:
-        ipv4_address: 10.0.6.13
+      lan:
+        ipv4_address: 10.1.7.31
     ports:
       - 19132:19132/udp
 
-  minecraft_server:
-    container_name: minecraft-server
-    image: itzg/minecraft-server
+  minecraft_java:
+    container_name: minecraft-java
+    image: itzg/minecraft-server:latest
     restart: unless-stopped
     tty: true
     stdin_open: true
@@ -112,14 +112,14 @@ services:
     volumes:
       - /data/minecraft:/data
     networks:
-      PublicMacvlan:
-        ipv4_address: 10.0.6.9
+      lan:
+        ipv4_address: 10.1.7.32
     ports:
       - 25565:25565
 
   project_zomboid_server:
     container_name: project-zomboid-server
-    image: cyrale/project-zomboid
+    image: cyrale/project-zomboid:latest
     restart: unless-stopped
     environment:
       SERVER_NAME: "zombieland"
@@ -127,8 +127,8 @@ services:
     volumes:
       - /data/project-zomboid:/server-data
     networks:
-      PublicMacvlan:
-        ipv4_address: 10.0.6.11
+      lan:
+        ipv4_address: 10.1.7.33
     ports:
       - "8766:8766/udp"
       - "8767:8767/udp"
@@ -138,7 +138,7 @@ services:
 
   factorio_server:
     container_name: factorio-server
-    image: factoriotools/factorio
+    image: factoriotools/factorio:latest
     restart: unless-stopped
     environment:
       INSTANCE_NAME: "Kangus' Megafactory"
@@ -146,32 +146,12 @@ services:
     volumes:
       - /data/factorio:/factorio
     networks:
-      PublicMacvlan:
-        ipv4_address: 10.0.6.12
+      lan:
+        ipv4_address: 10.1.7.34
     ports:
       - "34197:34197/udp"
       - "27015:27015/tcp"
 
 networks:
-  PublicMacvlan:
-    external: true
-
-volumes:
-  minecraft-bedrock:
-    external: true
-  ns1:
-    external: true
-  plex:
-    external: true
-  plex-metrics:
-    external: true
-  utorrent:
-    external: true
-  nzbget:
-    external: true
-  radarr:
-    external: true
-  sonarr:
-    external: true
-  jackett:
+  lan:
     external: true
