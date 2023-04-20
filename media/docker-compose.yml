@@ -118,7 +118,7 @@ networks:
 
 volumes:
   utorrent:
-    name: utorrnet
+    name: utorrent
   nzbget:
     name: nzbget
   radarr:
