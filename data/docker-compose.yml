@@ -9,7 +9,7 @@ services:
     networks:
       lan:
         ipv4_address: 10.1.7.10
-      proxy-internal:
+      proxy-traffic:
 
   mariadb:
     container_name: mariadb
@@ -21,7 +21,7 @@ services:
     networks:
       lan:
         ipv4_address: 10.1.7.11
-      proxy-internal:
+      proxy-traffic:
 
   redis:
     container_name: redis
@@ -31,10 +31,10 @@ services:
     networks:
       lan:
         ipv4_address: 10.1.7.12
-      proxy-internal:
+      proxy-traffic:
 
 networks:
   lan:
     external: true
-  proxy-internal:
+  proxy-traffic:
     external: true
