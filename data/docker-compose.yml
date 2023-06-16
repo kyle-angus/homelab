@@ -18,6 +18,7 @@ services:
     restart: unless-stopped
     environment:
       MARIADB_ROOT_PASSWORD: ${MYSQL_ROOT_PASS}
+      TZ: America/New_York
     networks:
       lan:
         ipv4_address: 10.1.7.21
