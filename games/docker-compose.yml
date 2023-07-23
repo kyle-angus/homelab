@@ -91,7 +91,7 @@ services:
       lan:
         ipv4_address: 10.1.7.31
     ports:
-      - 19132:19132/udp
+      - 19133:19133/udp
 
   minecraft_java:
     container_name: minecraft-java
