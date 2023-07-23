@@ -152,6 +152,26 @@ services:
       - "34197:34197/udp"
       - "27015:27015/tcp"
 
+  mythic_minecraft:
+    container_name: mythic-minecraft
+    image: itzg/minecraft-bedrock-server:latest
+    restart: unless-stopped
+    tty: true
+    stdin_open: TRUE
+    environment:
+      EULA: "TRUE"
+      GAMEMODE: "survival"
+      DIFFICULTY: "normal"
+      SERVER_PORT: "19132"
+      VERSION: "LATEST"
+    volumes:
+      - /data/minecraft-bedrock:/data
+    networks:
+      lan:
+        ipv4_address: 10.1.7.35
+    ports:
+      - 19132:19132/udp
+
 networks:
   lan:
     external: true
