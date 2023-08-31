@@ -32,7 +32,7 @@ services:
 
   utorrent:
     container_name: utorrent
-    image: ekho/utorrent:legacy
+    image: ekho/utorrent:latest
     restart: unless-stopped
     logging:
       driver: "json-file"
