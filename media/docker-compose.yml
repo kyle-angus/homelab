@@ -32,7 +32,7 @@ services:
 
   utorrent:
     container_name: utorrent
-    image: ekho/utorrent:latest
+    image: ekho/utorrent:legacy
     restart: unless-stopped
     logging:
       driver: "json-file"
@@ -45,7 +45,7 @@ services:
       PGID: 1000
     volumes:
       - utorrent:/utorrent/settings
-      - /media/utorrent:/data
+      - /media/torrent:/data
     networks:
       proxy-traffic:
       lan:
