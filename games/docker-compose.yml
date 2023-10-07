@@ -172,6 +172,16 @@ services:
   #   ports:
   #     - 19132:19132/udp
 
+  runescape_classic_server:
+    container_name: runescape-classic-server
+    image: kangus/runescape-classic-server:latest
+    restart: unless-stopped
+    networks:
+      lan:
+        ipv4_address: 10.1.7.36
+    ports:
+      - "43594:43594"
+
 networks:
   lan:
     external: true
