@@ -37,6 +37,7 @@ services:
       UID: 1000
       GID: 999
     tty: true
+    stdin_open: true
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - /data/minecraft-bedrock-backups:/backups
