@@ -1,0 +1,25 @@
+version: "3"
+
+services:
+project_zomboid_server:
+  container_name: project-zomboid-server
+  image: cyrale/project-zomboid:latest
+  restart: unless-stopped
+  environment:
+    SERVER_NAME: "zombieland"
+    ADMIN_PASSWORD: ${ZOMBOID_ADMIN_PASS}
+  volumes:
+    - /data/project-zomboid:/server-data
+  networks:
+    lan:
+      ipv4_address: 10.1.7.33
+  ports:
+    - "8766:8766/udp"
+    - "8767:8767/udp"
+    - "16261:16261/udp"
+    - "16262-16272:16262-16272"
+    - "27015:27015"
+
+networks:
+  lan:
+    external: true

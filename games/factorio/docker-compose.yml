@@ -1,0 +1,22 @@
+version: "3"
+
+services:
+factorio_server:
+  container_name: factorio-server
+  image: factoriotools/factorio:latest
+  restart: unless-stopped
+  environment:
+    INSTANCE_NAME: "Kangus' Megafactory"
+    INSTANCE_DESC: "Death to bugs"
+  volumes:
+    - /data/factorio:/factorio
+  networks:
+    lan:
+      ipv4_address: 10.1.7.34
+  ports:
+    - "34197:34197/udp"
+    - "27015:27015/tcp"
+
+networks:
+  lan:
+    external: true
