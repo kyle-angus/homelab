@@ -1,0 +1,43 @@
+version: "3"
+
+services:
+  minecraft_bedrock:
+    container_name: mincraft-bedrock
+    image: itzg/minecraft-bedrock-server:latest
+    restart: unless-stopped
+    tty: true
+    stdin_open: TRUE
+    environment:
+      SERVER_NAME: "Kangus Craft"
+      EULA: "TRUE"
+      GAMEMODE: "survival"
+      DIFFICULTY: "normal"
+      SERVER_PORT: "19132"
+      VERSION: "LATEST"
+    volumes:
+      - /data/minecraft-bedrock:/data
+    networks:
+      lan:
+        ipv4_address: 10.1.7.31
+    ports:
+      - 19132:19132/udp
+
+  world_backup:
+    image: kaiedo/minecraft-bedrock-backup
+    container_name: minecraft-bedrock-backup
+    restart: unless-stopped
+    depends_on:
+      - minecraft_bedrock
+    environment:
+      TZ: "America/New_York"
+      UID: "1000"
+      GID: "1000"
+    tty: true
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /data/minecraft-bedrock-backups:/backups
+      - /data/minecraft-bedrock:/server
+
+networks:
+  lan:
+    external: true
