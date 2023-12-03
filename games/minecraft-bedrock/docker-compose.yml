@@ -18,6 +18,7 @@ services:
       LEVEL_NAME: "KangusCraft"
       UID: 1000
       GID: 1000
+      OPS: "2533274817715081"
     volumes:
       - /data/minecraft-bedrock:/data
     networks:
