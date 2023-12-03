@@ -23,7 +23,7 @@ services:
       - 19132:19132/udp
 
   world_backup:
-    image: kaiedo/minecraft-bedrock-backup
+    image: kaiede/minecraft-bedrock-backup
     container_name: minecraft-bedrock-backup
     restart: unless-stopped
     depends_on:
