@@ -16,6 +16,8 @@ services:
       VERSION: "LATEST"
       ONLINE_MODE: true
       LEVEL_NAME: "KangusCraft"
+      UID: 1000
+      GID: 1000
     volumes:
       - /data/minecraft-bedrock:/data
     networks:
