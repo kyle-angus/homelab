@@ -1,0 +1,78 @@
+version: "3"
+
+services:
+  valheim:
+    container_name: valheim-server
+    image: lloesche/valheim-server:latest
+    restart: unless-stopped
+    cap_add:
+      - sys_nice
+    stop_grace_period: 2m
+    environment:
+      SERVER_NAME: "Kangorheim"
+      SERVER_PORT: 2456 # default
+      STATUS_HTTP: "true"
+      WORLD_NAME: "Kangorheim"
+      SERVER_PASS: ${VALHEIM_SERVER_PASS}
+      ADMINLIST_IDS: "76561198038288044"
+      UPDATE_CRON: "0 2 * * *"
+      RESTART_CRON: "0 3 * * *"
+      RESTAT_IF_IDLE: "true"
+      TZ: "America/Detroit"
+      BACKUPS: "true"
+      SERVER_PUBLIC: "true"
+      VALHEIM_PLUS: "true"
+      # Server
+      VPCFG_Server_enabled: "true"
+      VPCFG_Server_serverSyncsConfig: "true"
+      # Maps
+      VPCFG_Map_enabled: "true"
+      VPCFG_Map_shareMapProgression: "true"
+      VPCFG_Map_preventPlayerFromTurningOffPublicPosition: "true"
+      VPCFG_Map_shareAllPins: "true"
+      VPCFG_Map_displayCartsAndBoats: "true"
+      # FireSource
+      VPCFG_FireSource_enabled: "true"
+      VPCFG_FireSource_torches: "true"
+      VPCFG_FireSource_fires: "true"
+      # Fermenter
+      VPCFG_Fermenter_enabled: "true"
+      VPCFG_Fermenter_showDuration: "true"
+      # Food
+      VPCFG_Food_enabled: "true"
+      VPCFG_Food_disableFoodDegradation: "true"
+      # HUD
+      VPCFG_Hud_enabled: "true"
+      VPCFG_Hud_displayBowAmmoCounts: "2"
+      # Player
+      VPCFG_Player_enabled: "true"
+      VPCFG_Player_baseMegingjordBuff: "250"
+      VPCFG_Player_cropNotifier: "true"
+      # Workbench
+      VPCFG_Workbench_enabled: "true"
+      VPCFG_Workbench_workbenchRange: "40"
+      # GameClock
+      VPCFG_GameClock_enabled: "true"
+      VPCFG_GameClock_useAMPM: "true"
+      # BeeHive
+      VPCFG_Beehive_enabled: "true"
+      VPCFG_Beehive_honeyProductionSpeed: "60"
+      VPCFG_Beehive_maximumHoneyPerBeehive: "69"
+      # Pickable
+      VPCFG_Pickable_enabled: "true"
+      VPCFG_Pickable_edibles: "100"
+      VPCFG_Pickable_flowersAndIngredients: "100"
+      PUID: "1000"
+      GUID: "1000"
+    volumes:
+      - /data/valheim-server/config:/config
+      - /data/valheim-server/data:/opt/valheim
+    networks:
+      lan:
+        ipv4_address: 10.1.7.30
+    ports:
+      - "2456-2460:2456-2460/udp"
+
+networks:
+  lan:
+    external: true

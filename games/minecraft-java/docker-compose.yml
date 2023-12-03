@@ -1,0 +1,30 @@
+version: "3"
+
+services:
+  minecraft_java:
+    container_name: minecraft-java
+    image: itzg/minecraft-server:latest
+    restart: unless-stopped
+    tty: true
+    stdin_open: true
+    environment:
+      MOTD: "Kangus World"
+      DIFFICULTY: "normal"
+      ENFORCE_WHITELIST: "FALSE"
+      OPS: "k_angus"
+      SNOOPER_ENABLED: "FALSE"
+      LEVEL: "KangusWorld"
+      EULA: "TRUE"
+      VIEW_DISTANCE: "16"
+      TYPE: "FORGE"
+    volumes:
+      - /data/minecraft:/data
+    networks:
+      lan:
+        ipv4_address: 10.1.7.32
+    ports:
+      - 25565:25565
+
+networks:
+  lan:
+    external: true
