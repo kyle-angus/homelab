@@ -80,6 +80,7 @@ services:
     tty: true
     stdin_open: TRUE
     environment:
+      SERVER_NAME: "Kangus Craft"
       EULA: "TRUE"
       GAMEMODE: "survival"
       DIFFICULTY: "normal"
