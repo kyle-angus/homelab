@@ -32,8 +32,8 @@ services:
       - minecraft_bedrock
     environment:
       TZ: "America/New_York"
-      UID: "1000"
-      GID: "1000"
+      UID: 1000
+      GID: 1000
     tty: true
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
