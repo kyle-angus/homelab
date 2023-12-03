@@ -6,7 +6,7 @@ services:
     image: itzg/minecraft-bedrock-server:latest
     restart: unless-stopped
     tty: true
-    stdin_open: TRUE
+    stdin_open: true
     environment:
       SERVER_NAME: "Kangus Craft"
       EULA: "TRUE"
@@ -14,7 +14,7 @@ services:
       DIFFICULTY: "normal"
       SERVER_PORT: "19132"
       VERSION: "LATEST"
-      ONLINE_MODE: "TRUE"
+      ONLINE_MODE: true
       LEVEL_NAME: "KangusCraft"
     volumes:
       - /data/minecraft-bedrock:/data
