@@ -13,7 +13,7 @@ services:
       - traefik
     labels:
       - "traefik.enable=true"
-      - "traefik.tcp.routers.mariadb.rule=Host(`mariadb.kangus.net`)"
+      - "traefik.tcp.routers.mariadb.rule=HostSNI(`mariadb.kangus.net`)"
       - "traefik.tcp.routers.mariadb.entrypoints=mariadb"
       - "traefik.tcp.routers.mariadb.service=mariadb"
       - "traefik.tcp.services.mariadb.loadbalancer.server.port=3306"
