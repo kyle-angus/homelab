@@ -25,6 +25,8 @@ entryPoints:
     address: :443
     forwardedHeaders:
       insecure: true
+  mariadb:
+    address: :3306
   dns-tcp:
     address: :53/tcp
   dns-udp:
