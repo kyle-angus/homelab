@@ -25,6 +25,10 @@ entryPoints:
     address: :443
     forwardedHeaders:
       insecure: true
+  dns-tcp:
+    address: :53/tcp
+  dns-udp:
+    address: :53/udp
 
 certificatesResolvers:
   staging:
