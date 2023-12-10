@@ -12,7 +12,7 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.portainer.entrypoints=web,websecure"
-      - "traefik.http.routers.portainer.rule=Host(`portainer.gemini.kangus.net`)"
+      - "traefik.http.routers.portainer.rule=Host(`portainer.kangus.net`)"
       - "traefik.http.routers.portainer.service=portainer-service"
       - "traefik.http.services.portainer-service.loadbalancer.server.port=9000"
       - "traefik.http.routers.portainer.tls=true"
