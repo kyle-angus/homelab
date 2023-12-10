@@ -1,4 +1,4 @@
-version: "3"
+version: "3.3"
 
 services:
   mariadb:
@@ -10,11 +10,8 @@ services:
       MARIADB_ROOT_PASSWORD: ${MYSQL_ROOT_PASS}
       TZ: America/New_York
     networks:
-      lan:
-        ipv4_address: 10.1.7.21
-      proxy-traffic:
+      - traefik
 networks:
-  lan:
+  traefik:
     external: true
-  proxy-traffic:
-    external: true
+    name: traefik
