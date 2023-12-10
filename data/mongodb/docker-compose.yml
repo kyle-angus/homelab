@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+  mongodb:
+    container_name: mongodb
+    image: mongo
+    hostname: mongdb
+    restart: unless-stopped
+    networks:
+      lan:
+        ipv4_address: 10.1.7.20
+      proxy-traffic:
+networks:
+  lan:
+    external: true
+  proxy-traffic:
+    external: true

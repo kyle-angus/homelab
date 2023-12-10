@@ -1,0 +1,25 @@
+version: "3"
+
+services:
+  dns:
+    container_name: dns
+    image: pihole/pihole:latest
+    restart: always
+    environment:
+      - TZ=America/New York
+    volumes:
+      - dns:/etc/pihole
+      - dnsmasq:/etc/dnsmasq.d
+    expose:
+      - 53
+    networks:
+      - traefik
+networks:
+  traefik:
+    external: true
+    name: traefik
+volumes:
+  dns:
+    name: dns
+  dnsmasq:
+    name: dnsmasq

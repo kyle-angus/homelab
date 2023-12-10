@@ -1,0 +1,27 @@
+version: "3.3"
+services:
+  portainer:
+    container_name: portainer
+    expose:
+      - 9000
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+      - "portainer_data:/data"
+    restart: unless-stopped
+    image: portainer/portainer-ce:latest
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.portainer.entrypoints=web,websecure"
+      - "traefik.http.routers.portainer.rule=Host(`portainer.gemini.kangus.net`)"
+      - "traefik.http.routers.portainer.service=portainer-service"
+      - "traefik.http.services.portainer-service.loadbalancer.server.port=9000"
+      - "traefik.http.routers.portainer.tls=true"
+      - "traefik.http.routers.portainer.tls.certresolver=production"
+    networks:
+      - traefik
+volumes:
+  portainer_data:
+networks:
+  traefik:
+    external: true
+    name: traefik
