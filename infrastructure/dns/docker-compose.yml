@@ -31,8 +31,8 @@ services:
       - "traefik.tcp.routers.dns.entrypoints=dns-tcp"
       - "traefik.tcp.routers.dns.service=dns"
       - "traefik.tcp.services.dns.loadbalancer.server.port=53"
-      - "traefik.upd.routers.dns.entrypoints=dns"
-      - "traefik.udp.routers.dns.service=dns-udp"
+      - "traefik.upd.routers.dns.entrypoints=dns-udp"
+      - "traefik.udp.routers.dns.service=dns"
       - "traefik.udp.services.dns.loadbalancer.server.port=53"
     networks:
       - traefik
