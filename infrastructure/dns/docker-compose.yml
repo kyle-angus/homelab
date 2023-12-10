@@ -23,7 +23,7 @@ services:
       - "traefik.http.routers.dns.rule=Host(`dns.kangus.net`)"
       - "traefik.http.routers.dns.tls=true"
       - "traefik.http.routers.dns.tls.certresolver=production"
-      - "traefik.http.routers.dns.entrypoints=websecure"
+      - "traefik.http.routers.dns.entrypoints=web,websecure"
       - "traefik.http.routers.dns.service=pihole"
       - "traefik.http.services.dns.loadBalancer.server.port=80"
       - "traefik.tcp.routers.dns.rule=HostSNI(`*`)"
