@@ -12,6 +12,7 @@ services:
       - dnsmasq:/etc/dnsmasq.d
     expose:
       - 53
+      - 80
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.dns-api.rule=Host(`dns.kangus.net`) && Path(`/admin/api.php`)"
