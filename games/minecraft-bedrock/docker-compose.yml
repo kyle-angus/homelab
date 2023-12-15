@@ -16,6 +16,7 @@ services:
       VERSION: "LATEST"
       ONLINE_MODE: true
       LEVEL_NAME: "KangusCraft"
+      LEVEL_SEED: "1063292310985219505"
       UID: 1000
       GID: 1000
       OPS: "2533274817715081"
