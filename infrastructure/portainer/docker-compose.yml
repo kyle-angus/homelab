@@ -1,4 +1,5 @@
 version: "3.3"
+
 services:
   portainer:
     container_name: portainer
@@ -9,6 +10,8 @@ services:
       - "portainer_data:/data"
     restart: unless-stopped
     image: portainer/portainer-ce:latest
+    depends_on:
+      - traefik
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.portainer.entrypoints=web,websecure"

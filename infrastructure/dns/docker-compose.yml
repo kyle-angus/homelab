@@ -13,6 +13,8 @@ services:
     expose:
       - 53
       - 80
+    depends_on:
+      - traefik
     labels:
       - "traefik.enable=true"
       # - "traefik.http.routers.dns-api.rule=Host(`dns.kangus.net`) && Path(`/admin/api.php`)"
