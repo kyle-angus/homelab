@@ -13,7 +13,8 @@ services:
       - traefik
     labels:
       - "traefik.enable=true"
-      - "traefik.tcp.routers.mariadb.rule=HostSNI(`mariadb.kangus.net`)"
+      # - "traefik.tcp.routers.mariadb.rule=HostSNI(`mariadb.kangus.net`)"
+      - "traefik.tcp.routers.mariadb.rule=HostSNI(`mariadb.knet`)"
       - "traefik.tcp.routers.mariadb.tls=true"
       - "traefik.tcp.routers.mariadb.tls.certresolver=production"
       - "traefik.tcp.routers.mariadb.entrypoints=mariadb"
