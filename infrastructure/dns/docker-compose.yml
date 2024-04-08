@@ -38,10 +38,7 @@ services:
       - "traefik.udp.services.dns.loadbalancer.server.port=53"
     networks:
       - traefik
-networks:
-  traefik:
-    external: true
-    name: traefik
+
 volumes:
   dns:
     name: dns
