@@ -15,6 +15,6 @@ networks:
       parent: eno2
     ipam:
       config:
-        subnet: "10.1.7.0/24"
-        ip_range: "10.1.7.2/24"
-        gateway: "10.1.7.1"
+        - subnet: "10.1.7.0/24"
+          ip_range: "10.1.7.2/24"
+          gateway: "10.1.7.1"
