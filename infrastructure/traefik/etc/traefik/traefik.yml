@@ -2,10 +2,10 @@ global:
   checkNewVersion: true
   sendAnonymousUsage: false
 
-log:
-  level: ERROR
-  format: common
-  filePath: /etc/traefik/traefik.log
+# log:
+#   level: ERROR
+#   format: common
+#   filePath: /etc/traefik/traefik.log
 
 api:
   dashboard: true
