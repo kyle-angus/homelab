@@ -157,12 +157,12 @@ services:
       - /media:/downloads
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.sonarr.entrypoints=web,websecure"
-      - "traefik.http.routers.sonarr.rule=Host(`sonarr.kangus.net`)"
-      - "traefik.http.routers.sonarr.service=sonarr-service"
-      - "traefik.http.services.sonarr-service.loadbalancer.server.port=9117"
-      - "traefik.http.routers.sonarr.tls=true"
-      - "traefik.http.routers.sonarr.tls.certresolver=production"
+      - "traefik.http.routers.jackett.entrypoints=web,websecure"
+      - "traefik.http.routers.jackett.rule=Host(`jackett.kangus.net`)"
+      - "traefik.http.routers.jackett.service=jackett-service"
+      - "traefik.http.services.jackett-service.loadbalancer.server.port=9117"
+      - "traefik.http.routers.jackett.tls=true"
+      - "traefik.http.routers.jackett.tls.certresolver=production"
     networks:
       - traefik
 
