@@ -26,7 +26,13 @@ services:
       - "traefik.http.routers.traefik_https.tls=true"
       - "traefik.http.routers.traefik_https.tls.certresolver=production"
     networks:
-      - traefik
+      traefik:
+      lan:
+        ipv4_address: 10.1.7.3
+
+networks:
+  lan:
+    external: true
       
 volumes:
   ssl-certs:

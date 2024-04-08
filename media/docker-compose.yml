@@ -75,7 +75,7 @@ services:
       lan:
         ipv4_address: 10.1.7.6
 
-  nzbet:
+  nzbget:
     container_name: nzbget
     image: linuxserver/nzbget
     restart: unless-stopped
