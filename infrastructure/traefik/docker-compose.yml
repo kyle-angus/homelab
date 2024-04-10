@@ -23,8 +23,8 @@ services:
       - "traefik.http.routers.traefik_https.entrypoints=web,websecure"
       - "traefik.http.routers.traefik_https.service=traefik-service"
       - "traefik.http.services.traefik-service.loadbalancer.server.port=8080"
-      - "traefik.http.routers.traefik_https.tls=true"
-      - "traefik.http.routers.traefik_https.tls.certresolver=production"
+      # - "traefik.http.routers.traefik_https.tls=true"
+      # - "traefik.http.routers.traefik_https.tls.certresolver=production"
     networks:
       traefik:
       lan:
