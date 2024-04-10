@@ -13,11 +13,11 @@ entryPoints:
     address: :80
     forwardedHeaders:
       insecure: true
-    http:
-      redirections:
-        entryPoint:
-          to: websecure
-          scheme: https
+    # http:
+    #   redirections:
+    #     entryPoint:
+    #       to: websecure
+    #       scheme: https
   websecure:
     address: :443
     forwardedHeaders:
