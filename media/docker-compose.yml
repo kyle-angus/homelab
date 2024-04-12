@@ -6,6 +6,8 @@ services:
     hostname: plex.kangus.net
     image: plexinc/pms-docker:latest
     restart: unless-stopped
+    expose:
+      - 32400
     environment:
       TZ: "America/Detroit"
       PLEX_CLAIM: ${PLEX_CLAIM}
@@ -31,6 +33,8 @@ services:
     hostname: plex-metrics
     image: tautulli/tautulli
     restart: unless-stopped
+    expose:
+      - 80
     environment:
       TZ: "America/Detroit"
     volumes:
@@ -50,6 +54,8 @@ services:
     container_name: utorrent
     image: ekho/utorrent:legacy
     restart: unless-stopped
+    expose:
+      - 8080
     logging:
       driver: "json-file"
       options:
@@ -79,6 +85,8 @@ services:
     container_name: nzbget
     image: linuxserver/nzbget
     restart: unless-stopped
+    expose:
+      - 6789
     environment:
       TZ: "America/Detroit"
       NZBGET_USER: nzbget
@@ -103,6 +111,8 @@ services:
     container_name: radarr
     image: linuxserver/radarr
     restart: unless-stopped
+    expose:
+      - 7878
     environment:
       TZ: "America/Detroit"
       PUID: 1000
@@ -125,6 +135,8 @@ services:
     container_name: sonarr
     image: linuxserver/sonarr
     restart: unless-stopped
+    expose:
+      - 8989
     environment:
       TZ: "America/Detroit"
       PUID: 1000
@@ -147,6 +159,8 @@ services:
     container_name: jackett
     image: linuxserver/jackett
     restart: unless-stopped
+    expose:
+      - 9117
     environment:
       TZ: "America/Detroit"
       AUTO_UPDATE: "TRUE"
