@@ -20,7 +20,7 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.traefik_https.rule=Host(`traefik.kangus.net`)"
-      - "traefik.http.routers.traefik_https.entrypoints=web,websecure"
+      - "traefik.http.routers.traefik_https.entrypoints=web"
       - "traefik.http.routers.traefik_https.service=traefik-service"
       - "traefik.http.services.traefik-service.loadbalancer.server.port=8080"
       # - "traefik.http.routers.traefik_https.tls=true"
