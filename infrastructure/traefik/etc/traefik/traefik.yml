@@ -2,14 +2,15 @@ global:
   checkNewVersion: true
   sendAnonymousUsage: false
 
+# See: https://doc.traefik.io/traefik/observability/logs/
 log:
   level: ERROR
-  format: common
-  filePath: /etc/traefik/traefik.log
+  format: json
 
+# See: https://doc.traefik.io/traefik/operations/dashboard
 api:
   dashboard: true
-  insecure: true
+  insecure: true # note: secure mode is recommended
 
 entryPoints:
   web:
@@ -25,12 +26,6 @@ entryPoints:
     address: :443
     forwardedHeaders:
       insecure: true
-  mariadb:
-    address: :3306
-  dns-tcp:
-    address: :53/tcp
-  dns-udp:
-    address: :53/udp
 
 certificatesResolvers:
   staging:

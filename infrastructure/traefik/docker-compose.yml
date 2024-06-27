@@ -8,8 +8,6 @@ services:
       - 80:80
       - 443:443
       - 3306:3306
-      # - 53:53/tcp
-      # - 53:53/udp
     expose:
       - 8080
     volumes:
@@ -24,7 +22,7 @@ services:
       - "traefik.http.routers.traefik_https.service=traefik-service"
       - "traefik.http.services.traefik-service.loadbalancer.server.port=8080"
       - "traefik.http.routers.traefik_https.tls=true"
-      - "traefik.http.routers.traefik_https.tls.certresolver=production"
+      - "traefik.http.routers.traefik_https.tls.certresolver=staging"
     networks:
       - traefik
       
